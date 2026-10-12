@@ -1,0 +1,9 @@
+import h5py
+
+model_path = "brain_stroke_model.h5"
+
+with h5py.File(model_path, "a") as f:
+    f.attrs["Project"] = "Brain Stroke Detection"
+    f.attrs["Model"] = "MobileNetV2"
+    f.attrs["Task"] = "CT Scan Image Classification"
+    f.attrs["Purpose"] = "Educational and Research"
