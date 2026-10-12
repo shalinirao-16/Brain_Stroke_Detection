@@ -1,0 +1,55 @@
+<!-- templates/dashboard.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard — Brain Stroke Detector</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#f9fafb}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:#0b2b48;color:#fff}
+    .wrap{max-width:1000px;margin:20px auto;padding:12px}
+    .card{background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(3,8,23,0.06)}
+    .title{font-size:22px;font-weight:700;margin-bottom:10px}
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px}
+    .feature{background:#eef6ff;padding:14px;border-radius:10px;text-align:center}
+    .feature i{font-size:28px;color:#0b2b48;margin-bottom:8px}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div style="font-weight:700"><i class="fa-solid fa-brain"></i> Brain Stroke Detector</div>
+    <div>
+      <a href="{{ url_for('home') }}" style="color:#fff;margin-right:12px">Home</a>
+      <a href="{{ url_for('performance') }}" style="color:#fff;margin-right:12px">Performance</a>
+      <a href="{{ url_for('logout') }}" style="color:#fff">Logout</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <div class="card">
+      <div class="title">Welcome to Dashboard</div>
+      <p>Here you can explore system features and quick links.</p>
+      <div class="features">
+        <div class="feature">
+          <i class="fa-solid fa-upload"></i>
+          <p>Upload Patient Data</p>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-chart-line"></i>
+          <p>View Predictions</p>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-chart-pie"></i>
+          <p>Performance Charts</p>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-user-shield"></i>
+          <p>Secure Access</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
