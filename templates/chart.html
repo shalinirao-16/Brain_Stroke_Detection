@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Charts — Brain Stroke Detector</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #fbfdff;
+      color: #0b1220;
+    }
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      background: #0b2b48;
+      color: #fff;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 15px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #ffcc00; }
+
+    /* Container */
+    .wrap {
+      max-width: 1000px;
+      margin: 28px auto;
+      padding: 16px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 10px 32px rgba(3,8,23,0.08);
+      animation: fadeIn 0.6s ease;
+    }
+
+    h3 { margin: 0 0 10px 0; color: #004080; }
+    .small { color: #6b7280; font-size: 14px; }
+
+    /* Chart Box */
+    .chart-box {
+      margin-top: 16px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #eef4ff;
+      background: #f9fbff;
+      box-shadow: 0 4px 18px rgba(2,6,23,0.05);
+      padding: 12px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .chart-box:hover { transform: scale(1.01); }
+
+    .chart-img {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+    .chart-img:hover { transform: scale(1.02); }
+
+    .empty {
+      margin-top: 20px;
+      padding: 18px;
+      text-align: center;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      color: #64748b;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .chart-img { max-width: 100%; }
+      nav { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div style="font-weight:700"><i class="fa-solid fa-brain"></i> Brain Stroke Detector</div>
+    <div>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('performance') }}">Performance</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <div class="card">
+      <h3>Charts & Visualizations</h3>
+      <p class="small">Quick view of available performance metrics and results distribution.</p>
+
+      {% if metrics.available %}
+        <div class="chart-box">
+          <img class="chart-img" src="data:image/png;base64,{{ bars_data | default('') }}" alt="Model Metrics Chart">
+        </div>
+      {% else %}
+        <div class="empty">
+          <i class="fa-solid fa-chart-simple" style="font-size: 36px;"></i><br>
+          No metrics available to plot.<br>
+          <span class="small">Upload dataset and refresh to view performance charts.</span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
